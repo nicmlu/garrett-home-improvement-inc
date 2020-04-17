@@ -14,7 +14,19 @@ class SessionsController < ApplicationController
         end 
     end 
 
-    def facebook 
+    def facebook
+        @client = Client.find_or_create_by(email: auth["info"]["email"]) do |client|
+        client.first_name = auth["info"]["first_name"]
+        client.last_name = auth["info"]["last_name"]
+        client.password = SecureRandom.hex    
+      end
+      if @client.save
+        session[:client_id] = @client.id
+        redirect_to client_path(@client)
+      else
+        #binding.pry
+        redirect_to '/'
+      end 
     end 
 
      def destroy
