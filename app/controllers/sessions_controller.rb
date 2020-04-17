@@ -2,15 +2,19 @@ class SessionsController < ApplicationController
     def home
     end 
    
-    def create
-      client = Client.find_by(email: client_params[:email])
-      if client && client.authenticate(client_params[:password])
-          session[:client_id] = client.id
-          redirect_to client_path(client)
-      else 
-          flash[:message] = "Incorrect login information. Please try again."
-          redirect_to login_path
-      end 
+   def create 
+        @client = Client.find_by(email:params[:client][:email])
+        if @client && @client.authenticate(params[:client][:password])
+            session[:client_id] = @client.id
+            #binding.pry
+            redirect_to client_path(@client)
+        else 
+            flash[:message] = "Incorrect login info, please try again"
+            redirect_to login_path
+        end 
+    end 
+
+    def facebook 
     end 
 
      def destroy
@@ -21,8 +25,12 @@ class SessionsController < ApplicationController
 
     private
     
-    def user_params
-        params.require(:user).permit(:email, :password)
+    def client_params
+        params.require(:client).permit(:email, :password)
+    end
+
+    def auth
+    request.env['omniauth.auth']
     end
 
 end 
