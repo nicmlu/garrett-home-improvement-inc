@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-    # before_action :login_required
+     before_action :login_required, except: [:index]
     # before_action :current_client 
 
     def index

@@ -1,7 +1,7 @@
 <h2>Leave a Review</h2>
 <%= form_for(@review) do |f| %>
-<%= f.label :appointment_date %>
-<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date%> 
+<%= f.label :appointment %>
+<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :name%> 
 <br>
 <br>
 <%= f.label :service %>
