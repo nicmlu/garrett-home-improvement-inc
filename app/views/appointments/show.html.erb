@@ -1,8 +1,12 @@
 <h1>Appointment Details</h1>
-<p>Appointment Date:<%= @appointment.date%></p>
-<p>Appointment Time:<%= @appointment.time%></p>
-<p>Project Budget:<%= @appointment.budget%></p>
-<% if @appointment.notes do %>
-<p>Project Notes: <%=@appointment.date%></p>
-<% end %>
-<p>Before Photo: <%= @appointment.appointment_image%></p>
+<p>Appointment Date: <%= @appointment.date.strftime('%a, %b %d, %Y')%></p>
+<p>Appointment Time: <%= @appointment.time.strftime('%I:%M %p')%></p>
+<p>Project Budget: $<%= @appointment.budget%></p>
+<p>Project Notes: <%=@appointment.notes%></p>
+<p>Before Photos: 
+<% if @appointment.before_pictures.attached? %>
+        <%= @appointment.before_pictures.each do |picture| %>
+        <%= image_tag(picture, :class => "pictures") %>
+        <% end %>
+    <% end %>
+</p>

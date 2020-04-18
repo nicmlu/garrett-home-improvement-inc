@@ -1,6 +1,5 @@
 module ApplicationHelper
-  protect_from_forgery
-
+  
   def current_client 
     @current_client ||= Client.find_by_id(session[:client_id]) if session[:client_id]
   end 

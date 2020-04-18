@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
     end 
 
     def create
-        @appointment = current_user.appointments.build(appointment_params)
+        @appointment = current_client.appointments.build(appointment_params)
         if @appointment.save
            redirect_to appointment_path(@appointment)
         else 
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
     private
 
     def appointment_params
-        params.require(:appointment).permit(:date, :time, :budget, :notes, :appointment_image, :client_id, :service_id)
+        params.require(:appointment).permit(:date, :time, :budget, :notes, :client_id, :service_id, before_pictures: [])
     end 
 
 
