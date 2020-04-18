@@ -10,7 +10,7 @@
         <%= image_tag(picture, :class => "pictures") %>
         <% end %>
     <%else%>
-        <p>There are no before photos. Edit the appointment to add photos.</p>
+        <p><%= "There are no before photos. Edit the appointment to add photos."%></p>
     <% end %>
 </p>
 <br>
@@ -22,8 +22,8 @@
 <% if !@review%>
     <%= "You have not reviewed this service appointment yet." %>
 <% else %>
-    <p>Rating: <%= @review.rating%> Stars </p>
-    <p>Feedback: <%=@review.comment%></p>
+    <p>Rating: <%= @review.rating%> out of 5 Stars </p>
+    <p>Feedback: <%=link_to @review.comment, appointment_review_path(@appointment, @review)%></p>
     <% if @review.after_pictures.attached? %>
     <p>After Photos: 
         <%= @review.after_pictures.each do |picture| %>

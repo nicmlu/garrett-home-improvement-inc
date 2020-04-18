@@ -1,0 +1,30 @@
+<h1>Review for Appointment</h1>
+
+<p> You rated the service <%= @review.rating%> out of 5 Stars </p>
+
+<p> Your Feedback: <%= @review.comment%> </p>
+
+<p>Before Photos: 
+    <% if @appointment.before_pictures.attached? %>
+        <%= @appointment.before_pictures.each do |picture| %>
+        <%= image_tag(picture, :class => "pictures") %>
+        <% end %>
+    <%else%>
+        <%= "You have not added any before photos." %></p>
+    <% end %>
+</p>
+
+<p> After Photos:  
+    <% if @review.after_pictures.attached? %>
+    <%= @review.after_pictures.each do |picture| %>
+    <%= image_tag(picture, :class => "pictures") %>
+    <% end %>
+    <% else %>
+     <%= "You have not added any after photos." %>
+    <% end %>
+</p>
+
+<br>
+<%= link_to "Edit Review", edit_appointment_review_path(@appointment, @review), method:'get' %> | 
+<%= link_to "Delete Review", @review, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> | 
+<%= link_to "Back to Homepage", client_path(current_client), method:'get' %> 

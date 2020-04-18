@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
 
     def show
         @appointment = Appointment.find(params[:id])
-        @review = Review.find_by_id(@appointment)
+        @review = Review.find_by(appointment_id: @appointment.id)
     end 
 
     def create

@@ -12,11 +12,12 @@ class ReviewsController < ApplicationController
     end 
 
     def show
-        @review = Review.find(params[:id])
+        @review = Review.find_by_id(params[:id])
+        @appointment = Appointment.find_by_id(@review.appointment_id)
     end 
 
     def create
-      @review = Review.new(review_params)
+      @review = current_client.reviews.build(review_params)
        if @review.save
          redirect_to appointment_path(review_params[:appointment_id])
        else
