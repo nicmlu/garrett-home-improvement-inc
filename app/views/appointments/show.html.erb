@@ -10,3 +10,7 @@
         <% end %>
     <% end %>
 </p>
+<br>
+<br>
+<%= link_to "Edit Appointment", edit_client_appointment_path(current_client), method:'get'  %> | 
+<%= link_to "Delete Appointment", @appointment, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 

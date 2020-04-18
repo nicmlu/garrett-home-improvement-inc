@@ -19,6 +19,21 @@ class AppointmentsController < ApplicationController
         end
     end 
 
+    def edit
+        @appointment = Appointment.find(params[:id])
+    end 
+
+    def update 
+        @appointment = Appointment.find(params[:id])
+        @appointment.update(appointment_params)
+        redirect_to client_appointment_path(current_user)
+    end 
+
+    def destroy 
+        Appointment.find(params[:id]).destroy
+        redirect_to client_path(current_user)
+    end 
+
     private
 
     def appointment_params
