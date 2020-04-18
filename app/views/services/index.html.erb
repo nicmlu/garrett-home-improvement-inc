@@ -1,0 +1,7 @@
+<h1> Available Services </h1>
+
+<% @services.each do |service|%>
+<ul>
+<li> <%= link_to service.name, service_path(service) %></li>
+</ul>
+<% end %>

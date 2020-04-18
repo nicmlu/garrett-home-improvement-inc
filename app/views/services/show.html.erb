@@ -1,0 +1,9 @@
+<h1><%= @service.name %></h1>
+
+<p><%= @service.description %></p>
+
+
+<br>
+<%= link_to "Make an Appointment", new_client_appointment_path(current_client), method:'get' %> | 
+<%= link_to "Back to all Services", services_path, method:'get' %>  | 
+<%= link_to "Back to Homepage", client_path(current_client), method:'get' %> 
