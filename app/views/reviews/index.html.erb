@@ -1,7 +1,7 @@
-<h1> <%= current_user.first_name%>'s Service Reviews </h1>
+<h1> <%= current_client.first_name%>'s Service Reviews </h1>
 
 <% @reviews.each do |review|%>
 <ul>
-<li> <%= link_to review., user_budget_path(current_user, budget) %></li>
+<li> <%= link_to review.appointment.name, appointment_review_path(review.appointment.id, review) %></li>
 </ul>
 <% end %>

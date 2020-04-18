@@ -14,10 +14,11 @@ Rails.application.routes.draw do
 
   resources :clients do 
     resources :appointments, only: [:show, :index, :new, :create, :edit, :update]
+    resources :reviews, only: [:index]
   end 
 
   resources :appointments do 
-    resources :reviews, except: [:show]
+    resources :reviews, except: [:index]
   end 
 
   resources :reviews

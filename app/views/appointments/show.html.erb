@@ -22,10 +22,10 @@
 <% if !@review%>
     <%= "You have not reviewed this service appointment yet." %>
 <% else %>
-    <p>Rating: $<%= @review.rating%></p>
-    <p>Project Notes: <%=@review.comment%></p>
-    <p>After Photos: 
+    <p>Rating: <%= @review.rating%> Stars </p>
+    <p>Feedback: <%=@review.comment%></p>
     <% if @review.after_pictures.attached? %>
+    <p>After Photos: 
         <%= @review.after_pictures.each do |picture| %>
         <%= image_tag(picture, :class => "pictures") %>
         <% end %>
