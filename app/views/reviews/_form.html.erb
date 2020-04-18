@@ -1,19 +1,19 @@
 <h1>Service Review</h1>
 <%= form_for(@review) do |f| %>
-<%= f.label :appointment %>
-<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date %> 
+<%= f.label :appointment_date %>
+<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date%> 
 <br>
 <br>
 <%= f.label :service %>
-<%= f.collection_select :service_id, current_client.appointments.all, :id, :service_id %>
+<%= f.collection_select :service_id, current_client.services.all, :id, :name %>
 <br>
 <br>
 <%= f.label :rating %>
-<%= f.text_field :rating, required:true %>
+<%= f.select(:rating, (1..5), :prompt => 'Select') %>
 <br>
 <br>
 <%= f.label :comment %>
-<%= f.time_area :comment, required:true %>
+<%= f.text_area :comment, required:true %>
 <br>
 <br>
 <%= f.label :after_pictures %>

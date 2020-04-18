@@ -3,7 +3,8 @@ class ReviewsController < ApplicationController
     before_action :current_client
 
     def new
-        @review = Review.new(client_id: params[:client_id], service_id: params[service_id]) 
+        # binding.pry
+        @review = Review.new(new_review_params) 
     end 
 
     def show
@@ -37,6 +38,10 @@ class ReviewsController < ApplicationController
     end 
 
     private
+
+    def new_review_params
+        params.permit(:appointment_id)
+    end 
 
     def review_params
         params.require(:review).permit(:rating, :comment, :client_id, :notes, :client_id, :service_id, :appointment_id, :after_pictures)
