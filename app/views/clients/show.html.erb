@@ -2,6 +2,13 @@
 
 <h2>Hello, <%= @client.first_name %></h2>
 
-<%= link_to "Set up an Appointment", new_client_appointment_path(@client), method:'get' %> | 
+<h3>Here are your scheduled appointments:</h3>
+<ul>
+<% current_client.appointments.each do |appointment| %>
+    <li> <%= link_to appointment.service.name, client_appointment_path(current_client, appointment) %> on <%= appointment.date.strftime('%a, %b %d, %Y') %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Set up a New Appointment", new_client_appointment_path(@client), method:'get' %>  
 
 

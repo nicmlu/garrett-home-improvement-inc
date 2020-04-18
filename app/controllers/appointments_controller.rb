@@ -26,7 +26,7 @@ class AppointmentsController < ApplicationController
     def update 
         @appointment = Appointment.find(params[:id])
         @appointment.update(appointment_params)
-        redirect_to client_appointment_path(current_user)
+        redirect_to client_appointment_path(current_client)
     end 
 
     def destroy 
