@@ -1,0 +1,24 @@
+<h1>New Service Appointment</h1>
+<%= form_for(@appointment) do |f| %>
+<%= f.label :date %>
+<%= f.date_field :date, required:true %>
+<br>
+<br>
+<%= f.label :time %>
+<%= f.time_field :time, required:true %>
+<br>
+<br>
+<%= f.label :budget %>
+<%= f.text_field :budget, required:true %>
+<br>
+<br>
+<%= f.label :service %>
+<%= f.collection_select :service_id, Service.all, :id, :name %> 
+<br>
+<br>
+<%= f.label :notes%>
+<%= f.text_area :notes %>
+<br>
+<br>
+<%= f.submit "Request an Appointment" %>
+<% end %>

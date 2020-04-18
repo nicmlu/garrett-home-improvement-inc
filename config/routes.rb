@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   resources :clients do 
     resources :appointments, only: [:show, :index, :new, :create, :edit, :update]
   end 
+
+  resources :appointments
+
 end
