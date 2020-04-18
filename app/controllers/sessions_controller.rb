@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
     def home
+      if is_logged_in? 
+        redirect_to client_path(current_client)
+      else
+        redirect_to root_path
+      end
+      
     end 
    
    def create 
