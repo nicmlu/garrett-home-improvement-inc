@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :appointments, only: [:show, :index, :new, :create, :edit, :update]
   end 
 
-  resources :appointments
-  resources :reviews, except: [:index, :show]
+  resources :appointments do 
+    resources :reviews, except: [:index, :show]
+  end 
 
 end

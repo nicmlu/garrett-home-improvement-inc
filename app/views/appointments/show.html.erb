@@ -8,9 +8,30 @@
         <%= @appointment.before_pictures.each do |picture| %>
         <%= image_tag(picture, :class => "pictures") %>
         <% end %>
+    <%else%>
+        <p>There are no before photos. Edit the appointment to add photos.</p>
     <% end %>
 </p>
 <br>
-<br>
 <%= link_to "Edit Appointment", edit_client_appointment_path(current_client), method:'get'  %> | 
 <%= link_to "Delete Appointment", @appointment, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 
+<br>
+<br>
+<h2>Service Review:</h2>
+<% if !@review%>
+    <%= "You have not reviewed this service appointment yet." %>
+<% else %>
+    <p>Rating: $<%= @review.rating%></p>
+    <p>Project Notes: <%=@review.comment%></p>
+    <p>After Photos: 
+    <% if @review.after_pictures.attached? %>
+        <%= @review.after_pictures.each do |picture| %>
+        <%= image_tag(picture, :class => "pictures") %>
+        <% end %>
+    <% end %>
+    </p>
+<%end%>
+<br>
+<br>
+<%= link_to "Leave a Review", new_appointment_review_path(@appointment), method:'get'%> | 
+<%= link_to "Delete your Review", @review, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 

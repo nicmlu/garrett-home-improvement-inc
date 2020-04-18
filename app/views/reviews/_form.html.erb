@@ -1,5 +1,13 @@
 <h1>Service Review</h1>
 <%= form_for(@review) do |f| %>
+<%= f.label :appointment %>
+<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date %> 
+<br>
+<br>
+<%= f.label :service %>
+<%= f.collection_select :service_id, current_client.appointments.all, :id, :service_id %>
+<br>
+<br>
 <%= f.label :rating %>
 <%= f.text_field :rating, required:true %>
 <br>
@@ -8,24 +16,8 @@
 <%= f.time_area :comment, required:true %>
 <br>
 <br>
-<%= f.label :budget %>
-<%= f.text_field :budget, required:true %>
-<br>
-<br>
-<%= f.label :appointment_date %>
-<%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date %> 
-<br>
-<br>
-<%= f.label :service %>
-<%= f.collection_select :service_id, current_client.appointments.all, :id, :date %> 
-<br>
-<br>
-<%= f.label :comment%>
-<%= f.text_area :comment %>
-<br>
-<br>
-<%= f.label :before_pictures %>
-<%= f.file_field :before_pictures, multiple: true %>
+<%= f.label :after_pictures %>
+<%= f.file_field :after_pictures, multiple: true %>
 <br>
 <br>
 <%= f.submit%>
