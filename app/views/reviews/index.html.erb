@@ -1,0 +1,7 @@
+<h1> <%= current_user.first_name%>'s Service Reviews </h1>
+
+<% @reviews.each do |review|%>
+<ul>
+<li> <%= link_to review., user_budget_path(current_user, budget) %></li>
+</ul>
+<% end %>

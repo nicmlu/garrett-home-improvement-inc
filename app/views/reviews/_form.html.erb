@@ -1,4 +1,4 @@
-<h1>Service Review</h1>
+<h2>Leave a Review</h2>
 <%= form_for(@review) do |f| %>
 <%= f.label :appointment_date %>
 <%= f.collection_select :appointment_id, current_client.appointments.all, :id, :date%> 
@@ -22,3 +22,5 @@
 <br>
 <%= f.submit%>
 <% end %>
+<br>
+<%= link_to "Back to Homepage", client_path(current_client), method:'get'  %> 

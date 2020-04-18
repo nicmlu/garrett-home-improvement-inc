@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
         @review = Review.new(new_review_params) 
     end 
 
+    def index
+        @reviews = current_user.reviews
+    end 
+
     def show
         @review = Review.find(params[:id])
     end 

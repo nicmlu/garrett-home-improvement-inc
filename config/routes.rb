@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end 
 
   resources :appointments do 
-    resources :reviews, except: [:index, :show]
+    resources :reviews, except: [:show]
   end 
 
   resources :reviews
