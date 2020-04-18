@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
     before_action :login_required
+    before_action :current_client
 
     def new
         @appointment = Appointment.new(client_id: params[:client_id]) 
