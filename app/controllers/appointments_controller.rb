@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     def create
         @appointment = current_client.appointments.build(appointment_params)
         if @appointment.save
-           redirect_to appointment_path(@appointment)
+           render :show
         else 
           flash[:message] = "Appointment was not booked! Please try again."
           render :new 
