@@ -4,9 +4,10 @@
 <p>Appointment Time: <%= @appointment.time.strftime('%I:%M %p')%></p>
 <p>Project Budget: $<%= @appointment.budget%></p>
 <p>Project Notes: <%=@appointment.notes%></p>
-<p>Before Photos: 
+<p>Before Photos: </p>
+<p>
 <% if @appointment.before_pictures.attached? %>
-        <%= @appointment.before_pictures.each do |picture| %>
+        <% @appointment.before_pictures.each do |picture| %>
         <%= image_tag(picture, :class => "pictures") %>
         <% end %>
     <%else%>
@@ -14,7 +15,7 @@
     <% end %>
 </p>
 <br>
-<%= link_to "Edit Appointment", edit_client_appointment_path(current_client), method:'get'  %> | 
+<%= link_to "Edit Appointment", edit_client_appointment_path(current_client, @appointment), method:'get'  %> | 
 <%= link_to "Delete Appointment", @appointment, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 
 <br>
 <br>
@@ -36,3 +37,6 @@
 <br>
 <%= link_to "Leave a Review", new_appointment_review_path(@appointment), method:'get'%> | 
 <%= link_to "Delete your Review", @review, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 
+<br>
+<br>
+<%= link_to "Back to Homepage", client_path(current_client), method:'get'%> 
