@@ -1,11 +1,14 @@
 class SessionsController < ApplicationController
     def home
       if is_logged_in? 
-        redirect_to client_path(@client)
+        redirect_to client_path(current_client)
       else
         render :home
       end
       
+    end 
+
+    def new
     end 
    
    def create 
@@ -50,15 +53,11 @@ class SessionsController < ApplicationController
 
      def destroy
         session.clear 
-        render :home
+        redirect_to root_path
     end 
 
 
     private
-    
-    def client_params
-        params.require(:client).permit(:email, :password)
-    end
 
     def auth
     request.env['omniauth.auth']
