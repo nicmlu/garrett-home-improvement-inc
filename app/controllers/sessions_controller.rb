@@ -12,13 +12,12 @@ class SessionsController < ApplicationController
     end 
    
    def create 
-        @client = Client.find_by(email:params[:client][:email])
-        if @client && @client.authenticate(params[:client][:password])
+        @client = Client.find_by(email: params[:user][:email])
+        if @client && @client.authenticate(params[:user][:password])
             session[:client_id] = @client.id
-            #binding.pry
             redirect_to client_path(@client)
         else 
-            flash[:message] = "Incorrect login info, please try again"
+            flash[:alert] = "Incorrect login info, please try again"
             redirect_to login_path
         end 
     end 
