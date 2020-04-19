@@ -9,6 +9,8 @@
   <% end %>
 </ul>
 
-<%= link_to "Set up a New Appointment", new_client_appointment_path(@client), method:'get' %>  
+<%= link_to "Set up a New Appointment", new_client_appointment_path(@client), method:'get' %> |
+<%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %> 
+
 
 
