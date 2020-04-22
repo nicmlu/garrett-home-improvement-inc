@@ -14,17 +14,22 @@
   </head>
 
   <body>
-
-    <nav>
-      <ul>
-        <% if is_logged_in?%>
-          <li><a href="/logout">Logout</a></li>
+  <div class="navbar-fixed">
+    <nav class="grey lighten-1">
+      <ul class = "right">
+        <% if !is_logged_in? %>
+          <li><%= link_to "Homepage", root_path %></li>
+          <li><%= link_to "Services", services_path %></li>
+          <li><%= link_to "Signup", signup_path %></li>
+          <li><%= link_to "Login", login_path %></li>
         <% else %>
-          <li><a href="/signup">Signup</a> </li>
-          <li><a href="/login">Login</a></li>
+          <li><%= link_to "Client Portal", client_path(current_client) %></li>
+          <li><%= link_to "Services", services_path %></li>
+          <li><%= link_to "Logout", logout_path, method: 'delete' %></li>     
         <% end %>
       </ul>
     </nav>
+   </div> 
 
     <% flash.each do |type, msg| %>
       <div>
@@ -32,7 +37,7 @@
       </div>
         <% end %>
 
-    <div class="wrapper">
+   <div class="container center">
 
       <%= yield %>
 

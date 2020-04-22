@@ -10,7 +10,8 @@ class ClientsController < ApplicationController
         @client = Client.new(client_params)
         if @client.save 
             session[:client_id] = @client.id
-            render :show
+            binding.pry
+            redirect_to client_path(@client)
         else 
             flash[:message] = "Invalid registration info, please try again"
             redirect_to signup_path 
